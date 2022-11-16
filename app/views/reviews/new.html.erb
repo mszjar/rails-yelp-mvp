@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>New review for "<%= @restaurant.name %>"</h1>
+  <%= simple_form_for [@restaurant, @review], class: "form-group" do |f| %>
+    <div class="mb-3">
+      <%= f.label :rating %>
+      <%= f.text_field :rating, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :content %>
+      <%= f.text_field :content, class: "form-control" %>
+    </div>
+    <div>
+     <%= f.submit 'Submit review', class: "btn btn-primary text-decoration-none mt-3" %>
+    </div>
+  <% end %>
+  <%= link_to 'Return to the main menu', restaurants_path, class: "btn btn-info text-decoration-none mt-4" %>
+</div>

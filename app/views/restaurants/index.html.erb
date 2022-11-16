@@ -1,0 +1,11 @@
+<div class="container">
+  <fieldset>
+    <h1 class="mb-3">Restaurants</h1>
+    <%= link_to 'Create new restaurant', new_restaurant_path, class: "btn btn-primary text-decoration-none mb-3" %>
+    <% @restaurants.reverse.each do |restaurant| %>
+      <div class="d-flex">
+        <%= link_to restaurant.name, restaurant_path(restaurant.id), class: "alert alert-info text-decoration-none w-25 me-2" %>
+      </div>
+    <% end %>
+  </fieldset>
+</div>

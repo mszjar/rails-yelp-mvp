@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>New restaurant</h1>
+  <%= form_with model: @restaurant, class: "form-group" do |f| %>
+    <div class="mb-3">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :address %>
+      <%= f.text_field :address, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :phone_number %>
+      <%= f.text_field :phone_number, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :category %>
+      <%= f.text_field :category, class: "form-control" %>
+    </div>
+    <div>
+     <%= f.submit 'Create', class: "btn btn-primary text-decoration-none mt-3" %>
+    </div>
+  <% end %>
+  <%= link_to 'Return to the main menu', restaurants_path, class: "btn btn-info text-decoration-none mt-4" %>
+</div>
