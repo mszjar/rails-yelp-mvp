@@ -1,10 +1,10 @@
 class RestaurantsController < ApplicationController
+  before_action :set_restaurant, only: %i[edit update show]
   def index
-    @restaurants = Restaurant.all
+    params[:query]? @restaurants = Restaurant.where("name LIKE '%#{params[:query]}%'") : @restaurants = Restaurant.all
   end
 
   def show
-    @restaurant = Restaurant.find(params[:id])
   end
 
   def new
@@ -21,11 +21,9 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-    @restaurant = Restaurant.find(params[:id])
   end
 
   def update
-    @restaurant = Restaurant.find(params[:id])
     @restaurant.update(restaurant_params)
     redirect_to restaurant_path(@restaurant)
   end
@@ -37,6 +35,10 @@ class RestaurantsController < ApplicationController
   end
 
   private
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
+  end
 
   def restaurant_params
     params.require(:restaurant).permit(:name, :address, :phone_number, :category)
